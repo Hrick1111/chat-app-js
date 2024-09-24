@@ -1,0 +1,26 @@
+{
+  "name": "chat-app-js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Hrick1111/chat-app-js.git",
+  "author": "Aritra Nag <aritranag8835@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "express": "^4.21.0",
+    "helmet": "^7.1.0",
+    "socket.io": "^4.8.0"
+
+  },
+
+
+    "scripts": {
+      "dev:server": "yarn workspace @whatsapp-clone/server dev",
+      "dev:client": "yarn workspace @whatsapp-clone/client start",
+      "build:client": "yarn workspace @whatsapp-clone/client build",
+      "start": "yarn workspace @whatsapp-clone/server start"
+    }
+  }
