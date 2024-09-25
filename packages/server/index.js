@@ -1,11 +1,11 @@
 const express = require("express");
-const { corsConfig } = require("./controllers/serverController");
+//const { corsConfig } = require("./controllers/serverController");
 const { Server } = require("socket.io");
 const app = express();
 const helmet = require("helmet");
 const cors = require("cors");
 const authRouter = require("./routers/authRouter");
-const {
+/*const {
   initializeUser,
   addFriend,
   onDisconnect,
@@ -13,20 +13,20 @@ const {
   dm,
 } = require("./controllers/socketController");
 const pool = require("./db");
-const redisClient = require("./redis");
+const redisClient = require("./redis"); */
 const server = require("http").createServer(app);
 
-const io = new Server(server, {
-  cors: corsConfig,
-});
+//const io = new Server(server, {
+//  cors: corsConfig,
+//});
 
 app.use(helmet());
-app.use(cors(corsConfig));
+//app.use(cors(corsConfig));
 app.use(express.json());
 app.use("/auth", authRouter);
 app.set("trust proxy", 1);
 
-io.use(authorizeUser);
+/*io.use(authorizeUser);
 io.on("connect", socket => {
   initializeUser(socket);
 
@@ -51,4 +51,7 @@ setInterval(() => {
   }
   pool.query("DELETE FROM users u where u.username != $1", ["lester"]);
   redisClient.flushall();
-}, resetEverythingInterval);
+}, resetEverythingInterval);*/
+server.listen(process.env.PORT || 4000, () => {
+  console.log("Server listening on port " + (process.env.PORT || "4000"));
+});
